@@ -5,6 +5,7 @@ declare var Go: any
 console.log("Worker Spawned.")
 
 importScripts("../../public/wasm/wasm_exec.js")
+const WASM_URL = "/wasm/main.wasm"
 
 onmessage = (e) => {
   console.log(`Message received from main script: ${e.data}`)
@@ -12,7 +13,6 @@ onmessage = (e) => {
   const go = new Go()
   var wasm: any
 
-  const WASM_URL = "/wasm/main.wasm"
   if ('instantiateStreaming' in WebAssembly) {
     WebAssembly.instantiateStreaming(fetch(WASM_URL), go.importObject).then(function (obj) {
       wasm = obj.instance;
