@@ -5,13 +5,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "host": "vite --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mantine/core": "^7.12.1",
+    "@mantine/hooks": "^7.12.1",
+    "@tabler/icons-react": "^3.14.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-github-btn": "^1.4.0",
+    "react-markdown": "^9.0.1",
+    "react-terminal": "^1.4.4",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

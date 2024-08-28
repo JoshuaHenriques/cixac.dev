@@ -1,4 +1,4 @@
-console.log("Worker Spawned.")
+console.log("Worker spawned.")
 
 importScripts("/wasm/wasm_exec.js")
 const WASM_URL = "/wasm/main.wasm"

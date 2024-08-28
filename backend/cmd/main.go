@@ -89,6 +89,9 @@ var upgrader = websocket.Upgrader{
 }
 
 func serveWs(w http.ResponseWriter, r *http.Request) {
+	// fmt.Printf("r: %+v\n", r)
+	// todo: change function
+	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println("upgrade:", err)
