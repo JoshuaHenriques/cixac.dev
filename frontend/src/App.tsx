@@ -1,14 +1,14 @@
 import './App.css'
 import Playground from './components/Playground'
 import Documentation from './components/Documentation'
-import Intro from './components/Intro'
+import Hero from './components/Hero'
 import ToTop from './components/ToTop'
 
 function App() {
 
   return (
     <>
-      <Intro />
+      <Hero />
       <Playground />
       <Documentation />
       <ToTop />
