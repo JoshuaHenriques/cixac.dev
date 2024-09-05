@@ -1,30 +1,33 @@
 import Markdown from 'react-markdown'
-import { Box, Button, Collapse, Group } from '@mantine/core'
+import { Button, Collapse } from '@mantine/core'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
-import cixacDocs from '../assets/cixacDocs.md?raw'
+import cixacDocs from '../../assets/cixacDocs.md?raw'
 import { useDisclosure } from '@mantine/hooks'
+import classes from './Documentation.module.css'
+import "github-markdown-css"
 
 function Documentation() {
   const [opened, { toggle }] = useDisclosure(false)
 
   return (
-    <Box>
-      <Group justify="center" mb={5}>
-        <Button onClick={toggle}>Show Documentation</Button>
-      </Group>
+    <div className={classes.docs}>
+      <div className={classes.button} >
+        <Button size="md" onClick={toggle}>
+          Documentation
+        </Button>
+      </div>
 
       <Collapse in={opened} transitionDuration={500} transitionTimingFunction="linear">
-        <h1>Documentation</h1>
         <Markdown
-          className={"markdown"}
+          className={classes.markdown}
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeSlug]}
         >
           {cixacDocs}
         </Markdown>
-      </Collapse>
-    </Box>
+      </Collapse >
+    </div >
   )
 }
 

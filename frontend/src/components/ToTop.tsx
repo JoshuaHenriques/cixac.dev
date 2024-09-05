@@ -7,7 +7,7 @@ function ToTop() {
 
   return (
     <Affix position={{ bottom: 20, right: 20 }}>
-      <Transition transition="slide-up" mounted={scroll.y > 0}>
+      <Transition transition="slide-up" mounted={scroll.y > 350}>
         {(transitionStyles) => (
           <Button
             leftSection={<IconArrowUp style={{ width: rem(16), height: rem(16) }} />}

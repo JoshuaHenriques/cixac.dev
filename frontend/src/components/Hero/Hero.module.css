@@ -1,0 +1,32 @@
+.hero {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 50px;
+}
+
+.title {
+  margin-left: 10px;
+  padding-right: 15px;
+}
+
+@media all and (max-width: 768px) {
+  .hero {
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+}
+
+.button {
+  align-self: flex-end;
+  background-color: transparent;
+  padding: 0;
+}
+
+.button:hover {
+  background-color: transparent;
+}

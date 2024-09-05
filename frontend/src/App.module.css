@@ -1,0 +1,49 @@
+:global(#root) {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 50px;
+  overflow: auto;
+}
+
+.toggle {
+  align-self: flex-end;
+  order: 1;
+}
+
+.stack {
+  display: flex;
+  flex-flow: column nowrap;
+  place-items: center;
+  order: 2;
+  flex-grow: 2;
+}
+
+
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+.dark {
+  @mixin dark {
+    display: none;
+  }
+
+  @mixin light {
+    display: block;
+  }
+}
+
+.light {
+  @mixin light {
+    display: none;
+  }
+
+  @mixin dark {
+    display: block;
+  }
+}

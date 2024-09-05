@@ -1,0 +1,8 @@
+.textarea {
+  order: 1;
+  margin: 0;
+  padding: 0;
+  resize: none;
+  width: 99%;
+  height: 99%;
+}
