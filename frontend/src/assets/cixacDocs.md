@@ -236,7 +236,7 @@ print(obj[50])
 | ```+ -``` | Addition, Subtraction |
 | ```< > <= >=``` | Comparison |
 | ```== !=``` | Equality |
-| <code>&#124;&#124;</code> | Logical or |
+| &#124;&#124; | Logical or |
 | ```&&``` | Logical and |
 | ```!``` | Logical not |
 
