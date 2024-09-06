@@ -5,7 +5,6 @@ import rehypeSlug from 'rehype-slug'
 import cixacDocs from '../../assets/cixacDocs.md?raw'
 import { useDisclosure } from '@mantine/hooks'
 import classes from './Documentation.module.css'
-import "github-markdown-css"
 
 function Documentation() {
   const [opened, { toggle }] = useDisclosure(false)
