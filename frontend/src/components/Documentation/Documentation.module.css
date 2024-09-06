@@ -3,7 +3,6 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  /* overflow: auto; */
 }
 
 .button {
@@ -42,4 +41,10 @@
   border: 1px solid #e1e4e8;
   border-radius: 6px;
   margin-bottom: 16px;
+}
+
+@media all and (max-width: 900px) {
+  .markdown {
+    text-align: center;
+  }
 }

@@ -38,6 +38,10 @@ function TextArea({ handleTextArea, value }: PropTypes) {
   return (
     <textarea
       autoFocus
+      autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="off"
+      spellCheck="false"
       ref={textareaRef}
       value={value}
       onChange={(event) => { handleTextArea(event) }}
