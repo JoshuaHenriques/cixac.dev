@@ -25,9 +25,7 @@ body {
   margin: 0;
   display: flex;
   min-width: 320px;
-  /* width: 100vw; */
   height: 90vh;
-  /* height: 100%; */
 }
 
 .active {

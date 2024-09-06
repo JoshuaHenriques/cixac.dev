@@ -27,6 +27,7 @@
 .replTerminal {
   width: 90%;
   height: 90%;
+  max-width: 900px;
   overflow: auto;
 }
 
@@ -49,9 +50,9 @@
   width: 80vw;
   height: 90%;
   gap: 5px;
+  max-width: 1200px;
   max-height: 780px;
 }
-
 
 .scriptTerminal {
   order: 2;
