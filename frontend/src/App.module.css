@@ -5,8 +5,7 @@
   text-align: center;
   display: flex;
   flex-flow: column nowrap;
-  gap: 50px;
-  overflow: auto;
+  gap: 25px;
 }
 
 .toggle {
@@ -21,7 +20,6 @@
   order: 2;
   flex-grow: 2;
 }
-
 
 .icon {
   width: 22px;
