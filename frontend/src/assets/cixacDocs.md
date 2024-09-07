@@ -42,7 +42,7 @@ Cixac is an object-oriented dynamic programming language where the syntax is sim
 | array | ``[] [1, 10] ["food", 49, true, {"foo": "bar"}]`` |
 | objects/hashmap | ``{"arr": [1, 2], 5: "five"} `` |
 
-### Variable bindings
+### Variable Bindings
 
 ```
 let int = 105329                         // integer
@@ -64,7 +64,7 @@ const fun = fn(a, b) { (a - b) * (a + b) }  // const function
 let x = 5
 let y = x * 3
 print((x + y) / 2 - 3)
-# 7
+// 7
 ```
 
 ### Single and Multi-Line Comments
@@ -94,12 +94,12 @@ let greaterThan = fn(x) {
 	} else if (x == 20) {
     return "x equals 20"
   } else {
-      "20 is greater" # return keyword is optional
+      "20 is greater" // return keyword is optional
     }
 }
 
 print(greaterThan(a))
-# 20 is greater
+// 20 is greater
 ```
 
 ### For Loop
@@ -116,9 +116,9 @@ for (let i = 0; i < 10; i++) {
     break
   }
 }
-# 1
-# 3
-# 5
+// 1
+// 3
+// 5
 ```
 
 ### While Loop
@@ -131,7 +131,7 @@ while (i < 5) {
 }
 
 print(i)
-# 5
+// 5
 ```
 
 ### Functions and Closures
@@ -142,22 +142,22 @@ fn multiply(x, y) {
   x * y 
 }
 print(multiply(40 / 2, 5))
-# 100 
+// 100 
 
 print(fn(x) { x }(5))
-# 5
+// 5
 
-# closure
+// closure
 const newAdder = fn(x) { return fn(y) { x + y } }
 const addTwo = newAdder(2)
 print(addTwo(3))
-# 5
+// 5
 
-# higher-order function
+// higher-order function
 const sub = fn(x, y) { x - y }
 const applyFn = fn(x, y, func) { return func(x, y) }
 print(applyFn(2, 4, sub))
-# -2
+// -2
 ```
 
 ### Recursion
@@ -174,7 +174,7 @@ let fib = fn(x) {
 }
 
 print(fib(15))
-# 610
+// 610
 ```
 
 ### Strings
@@ -182,15 +182,15 @@ print(fib(15))
 ```
 const name = "Joshua"
 print(name)
-# Joshua
+// Joshua
 
 print(name[3] + name[5])
-# ha
+// ha
 
 let makeGreeter = fn(greeting) { fn(name) { greeting + " " + name + "!" } }
 let hey = makeGreeter("Hey")
 print(hey("Joshua"))
-# Hey Joshua!
+// Hey Joshua!
 ```
 
 ### Arrays
@@ -198,30 +198,30 @@ print(hey("Joshua"))
 ```
 let arr = ["string", true, 29, fn(x) { x * x }]
 print(arr[0])
-# string
+// string
 
 print(arr[4 - 2])
-# 29
+// 29
 
 print(arr[3](2))
-# 4
+// 4
 ```
 
-### Objects/Hashes
+### Objects
 
 ```
 let obj = {"name": "Alex", "age": 42, "title": "CEO", true: "boolean key", 50: "integer key"}
 print(obj["name"])
-# Alex
+// Alex
 
 print(obj["age"])
-# 42
+// 42
 
 print(obj[true])
-# boolean key
+// boolean key
 
 print(obj[50])
-# integer key
+// integer key
 ```
 
 ### Binary and Unary Operators
@@ -236,11 +236,11 @@ print(obj[50])
 | ```+ -``` | Addition, Subtraction |
 | ```< > <= >=``` | Comparison |
 | ```== !=``` | Equality |
-| &#124;&#124; | Logical or |
+| <code>&#124;&#124;</code> | Logical or |
 | ```&&``` | Logical and |
 | ```!``` | Logical not |
 
-### Builtin functions
+### Builtin Functions
 
 | Function | Signature | Description | 
 |----------|-----------|-------------| 
