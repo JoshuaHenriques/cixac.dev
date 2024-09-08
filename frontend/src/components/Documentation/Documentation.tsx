@@ -3,17 +3,21 @@ import { Button, Collapse } from '@mantine/core'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import cixacDocs from '../../assets/cixacDocs.md?raw'
-import { useDisclosure } from '@mantine/hooks'
+import { useDisclosure, useWindowScroll } from '@mantine/hooks'
 import classes from './Documentation.module.css'
 
 function Documentation() {
   const [opened, { toggle }] = useDisclosure(false)
+  const [scroll, scrollTo] = useWindowScroll()
 
   return (
     <div className={classes.docs}>
       <div className={classes.button} >
-        <Button size="md" onClick={toggle}>
-          Documentation
+        <Button size="sm" onClick={() => {
+          toggle()
+          setTimeout(() => !opened && scrollTo({ y: scroll.y + 500 }), 400)
+        }}>
+          {opened ? <span>Close</span> : <span>Documentation</span>}
         </Button>
       </div>
 
