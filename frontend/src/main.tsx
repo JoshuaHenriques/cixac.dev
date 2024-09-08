@@ -24,7 +24,7 @@ const theme = createTheme({
   },
   activeClassName: classes.active,
   primaryColor: 'blueGrey',
-  defaultRadius: 'md'
+  defaultRadius: 'sm'
 })
 
 createRoot(document.getElementById('root')!).render(
