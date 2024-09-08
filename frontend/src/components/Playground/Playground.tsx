@@ -1,4 +1,4 @@
-import { useRef, ChangeEvent, useContext, useState } from "react"
+import { ChangeEvent, useContext, useState } from "react"
 import Terminal from "../Terminal"
 import { TerminalContext } from "react-terminal"
 import { Button, Switch } from "@mantine/core"
@@ -19,17 +19,13 @@ const welcomeMessage = <><span>Cixac Version: 0.1-alpha (Aug 20 2024)</span><br 
 // const welcomeMessage = SOME THING FOR SCRIPT MODE
 
 function Playground() {
-  const [replMode, setReplMode] = useState(true)
-  const [textAreaValue, setTextAreaValue] = useState(`for (let i = 0; i < 10; i++) {
+  const [scriptMode, setScriptMode] = useState(true)
+  const [textAreaValue, setTextAreaValue] = useState(`for (let i = 0; i < 100; i++) {
   if (i % 2 == 0) {
     continue
   }
 
   print(i)
-
-  if (i >= 5) {
-    break
-  }
 }
 `)
 
@@ -66,7 +62,7 @@ function Playground() {
       setBufferedContentStore(prev)
       return swap
     })
-    setReplMode((mode) => !mode)
+    setScriptMode((mode) => !mode)
   }
 
   const handleTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => setTextAreaValue(e.target.value)
@@ -76,14 +72,14 @@ function Playground() {
       <div className={classes.switch}>
         <Switch
           size="xl"
-          onLabel="REPL"
-          offLabel="SCRIPT"
+          onLabel="SCRIPT"
+          offLabel="REPL"
           defaultChecked
           onChange={handleModeChange}
         />
       </div>
       <div className={classes.codeArea}>
-        {replMode ?
+        {!scriptMode ?
           <div className={classes.replTerminal}>
             <Terminal
               prompt={'>>'}
@@ -102,7 +98,7 @@ function Playground() {
                 />
               </div>
             </div>
-            <Button className={classes.runScriptBtn} variant="filled" onClick={handleRunCode} >Run Script</Button>
+            <Button size="sm" className={classes.runScriptBtn} onClick={handleRunCode}>Run</Button>
           </div>
         }
       </div>
