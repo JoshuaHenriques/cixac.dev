@@ -12,7 +12,7 @@ function App() {
     keepTransitions: true
   })
   const computedColorScheme = useComputedColorScheme(
-    'dark',
+    'light',
     { getInitialValueInEffect: true }
   )
 

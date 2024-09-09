@@ -2,13 +2,15 @@
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
+  padding: 0;
   text-align: center;
   display: flex;
   flex-flow: column nowrap;
 }
 
 .toggle {
+  padding: 1rem;
   align-self: flex-end;
   order: 1;
 }

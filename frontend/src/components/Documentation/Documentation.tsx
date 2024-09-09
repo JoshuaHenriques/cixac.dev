@@ -21,7 +21,7 @@ function Documentation() {
         </Button>
       </div>
 
-      <Collapse in={opened} transitionDuration={500} transitionTimingFunction="linear">
+      <Collapse in={opened} className={classes.collapse} transitionDuration={500} transitionTimingFunction="linear">
         <Markdown
           className={classes.markdown}
           remarkPlugins={[remarkGfm]}

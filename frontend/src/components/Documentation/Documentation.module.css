@@ -1,8 +1,12 @@
 .docs {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  max-width: 100%;
+
+  max-width: calc(100% - 4rem);
+}
+
+.docs * {
+  max-width: 100%;
 }
 
 .button {
@@ -44,8 +48,29 @@
   margin-bottom: 16px;
 }
 
+.collapse {
+  max-width: 100%;
+}
+
 @media all and (max-width: 900px) {
   .markdown {
-    text-align: center;
+    box-sizing: border-box;
   }
+  /* .markdown { */
+  /*   display: flex; */
+  /*   flex-flow: column nowrap; */
+  /*   width: 100%; */
+  /* } */
+  /* .markdown > * { */
+  /*   width: 100%; */
+  /* } */
+  /* todo */
+  /* * { */
+  /*   width: 100%; */
+  /*   max-width: 100%; */
+  /* } */
+  /**/
+  /* .markdown > * { */
+  /*   max-width: 100%; */
+  /* } */
 }
