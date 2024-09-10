@@ -1,10 +1,7 @@
-import Markdown from 'react-markdown'
 import { Button, Collapse } from '@mantine/core'
-import remarkGfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
-import cixacDocs from '../../assets/cixacDocs.md?raw'
 import { useDisclosure, useWindowScroll } from '@mantine/hooks'
 import classes from './Documentation.module.css'
+import Markdown from './Markdown'
 
 function Documentation() {
   const [opened, { toggle }] = useDisclosure(false)
@@ -22,13 +19,7 @@ function Documentation() {
       </div>
 
       <Collapse in={opened} className={classes.collapse} transitionDuration={500} transitionTimingFunction="linear">
-        <Markdown
-          className={classes.markdown}
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeSlug]}
-        >
-          {cixacDocs}
-        </Markdown>
+        <Markdown />
       </Collapse >
     </div >
   )
