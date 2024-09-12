@@ -40,21 +40,4 @@
   .markdown {
     box-sizing: border-box;
   }
-  /* .markdown { */
-  /*   display: flex; */
-  /*   flex-flow: column nowrap; */
-  /*   width: 100%; */
-  /* } */
-  /* .markdown > * { */
-  /*   width: 100%; */
-  /* } */
-  /* todo */
-  /* * { */
-  /*   width: 100%; */
-  /*   max-width: 100%; */
-  /* } */
-  /**/
-  /* .markdown > * { */
-  /*   max-width: 100%; */
-  /* } */
 }

@@ -6,3 +6,8 @@
   right: 0.6rem;
   cursor: pointer;
 }
+
+.button:hover {
+  background: #C5C8C6;
+  border-radius: 0.4rem;
+}

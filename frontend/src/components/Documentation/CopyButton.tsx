@@ -1,8 +1,8 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import classes from "./CopyButton.module.css"
 
 function CopyButton({ codeElement }: { codeElement: HTMLElement }) {
-  const [fillColor, setFillColor] = useState('#C5C8C6')
+  const [fillColor, setFillColor] = useState('')
 
   const handleOnClick = () => {
     const tempTextArea = document.createElement('textarea');
@@ -13,7 +13,7 @@ function CopyButton({ codeElement }: { codeElement: HTMLElement }) {
     document.body.removeChild(tempTextArea);
     setFillColor('#8BC34A')
     setTimeout(() => {
-      setFillColor('#C5C8C6')
+      setFillColor('')
     }, 2000)
   }
 
