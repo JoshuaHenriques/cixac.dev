@@ -15,7 +15,11 @@ ws.addEventListener('open', () => {
   console.log("Websocket opened.")
 })
 
-const welcomeMessage = <><span>Cixac Version: 0.1-alpha (Aug 20 2024)</span><br /><span>Type "clear" to clear the terminal screen</span><br /></>
+const welcomeMessage = <>
+  <span>Cixac Version: 0.1-alpha (Aug 20 2024)</span><br />
+  <span>Type "clear" to clear the terminal screen</span><br />
+  <span>Use '\' at the end of a line for multi-line input</span><br />
+</>
 
 function Playground() {
   const [scriptMode, setScriptMode] = useState(true)
