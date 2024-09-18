@@ -23,6 +23,7 @@ const welcomeMessage = <>
 
 function Playground() {
   const [scriptMode, setScriptMode] = useState(true)
+  const [prompt, setPrompt] = useState('>>')
   const [textAreaValue, setTextAreaValue] = useState(`for (let i = 0; i < 100; i++) {
   if (i % 2 == 0) {
     continue
@@ -37,8 +38,17 @@ function Playground() {
 
   const defaultHandler = (cmd: string, cmdArgs: string) => {
     const code = `${cmd} ${cmdArgs}`
+    console.log({ code })
+    if (code.trimEnd().slice(-1) == `\\`) {
+      setPrompt(() => "...")
+    } else {
+      if (prompt != ">>") {
+        setPrompt(() => ">>")
+      }
+    }
     ws.send(code)
     ws.onmessage = (event) => {
+      console.log({ data: event.data })
       setBufferedContent((prev) => (
         <>
           {prev}
@@ -85,7 +95,7 @@ function Playground() {
         {!scriptMode ?
           <div className={classes.replTerminal}>
             <Terminal
-              prompt={'>>'}
+              prompt={prompt}
               enableInput={true}
               welcomeMessage={welcomeMessage}
               defaultHandler={defaultHandler}
