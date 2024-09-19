@@ -34,8 +34,10 @@ function Markdown() {
     });
 
     return () => {
-      roots.forEach((root: Root) => root.unmount())
-      document.querySelectorAll('.copy-button-container').forEach(container => container.remove())
+      setTimeout(() => {
+        roots.forEach((root: Root) => root.unmount())
+        document.querySelectorAll('.copy-button-container').forEach(container => container.remove())
+      }, 0)
     }
   }, [])
 
