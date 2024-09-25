@@ -3,7 +3,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { TerminalContextProvider } from 'react-terminal'
 import App from './App.tsx'
-import { createTheme, MantineProvider, rem } from '@mantine/core'
+import { createTheme, MantineProvider } from '@mantine/core'
 import classes from './main.module.css'
 
 const theme = createTheme({
