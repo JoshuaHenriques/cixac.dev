@@ -1,9 +1,9 @@
 export function getWorker() {
-  return new Worker("./src/worker/worker.js")
+  return new Worker(new URL('/src/worker/worker.js', import.meta.url))
 }
 
-export function useWorker(worker, code, callback) {
-  const promise = new Promise((resolve, reject) => {
+export function useWorker(worker: Worker, code: string, callback: (message: string) => void) {
+  const promise = new Promise((resolve: (value?: unknown) => void, reject) => {
     worker.onmessage = (event) => {
       if (event.data.done) {
         resolve()
@@ -21,7 +21,7 @@ export function useWorker(worker, code, callback) {
   return promise
 }
 
-export function terminateWorker(worker) {
+export function terminateWorker(worker: Worker) {
   worker.terminate()
   console.log("Worker terminated")
 }

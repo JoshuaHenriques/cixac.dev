@@ -1,5 +1,7 @@
 console.log("Worker spawned.")
 
+// declare const importScripts: (path: string) => void
+
 importScripts("/wasm/wasm_exec.js")
 const WASM_URL = "/wasm/main.wasm"
 
@@ -12,7 +14,7 @@ onmessage = async (e) => {
       let oldLog = console.log;
       console.log = (line) => { postMessage({ message: line }) }
       go.argv = ["cixac", "-e", e.data]
-      go.run(obj.instance).then((_) => {
+      go.run(obj.instance).then((_: any) => {
         console.log("")
         console.log = oldLog
         postMessage({
@@ -26,7 +28,7 @@ onmessage = async (e) => {
         let oldLog = console.log;
         console.log = (line) => { postMessage({ message: line }) }
         go.argv = ["cixac", "-e", e.data]
-        go.run(obj.instance).then((_) => {
+        go.run(obj.instance).then((_: any) => {
           console.log("")
           console.log = oldLog
           postMessage({
