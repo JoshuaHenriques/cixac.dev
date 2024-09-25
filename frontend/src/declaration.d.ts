@@ -4,3 +4,7 @@ declare module '*.md?raw' {
 }
 
 declare module '*.module.css'
+
+declare const importScripts: (path: string) => void
+
+declare const Go: any
