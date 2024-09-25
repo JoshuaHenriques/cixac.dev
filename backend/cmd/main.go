@@ -3,8 +3,10 @@ package main
 import (
 	"bufio"
 	"flag"
+	"fmt"
 	"io"
 	"log"
+	"mime"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -13,8 +15,6 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-var addr = flag.String("addr", ":8080", "http service address")
-
 const (
 	pongWait         = 60 * time.Second
 	pingPeriod       = (pongWait * 9) / 10
@@ -22,6 +22,8 @@ const (
 	closeGracePeriod = 10 * time.Second
 	maxMessageSize   = 8192
 )
+
+var frontendPath string
 
 func internalError(ws *websocket.Conn, msg string, err error) {
 	log.Println(msg, err)
@@ -152,15 +154,63 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func index(w http.ResponseWriter, r *http.Request) {
+	path := filepath.Join(frontendPath, r.URL.Path)
+
+	_, err := os.Stat(path)
+	if os.IsNotExist(err) {
+		http.ServeFile(w, r, filepath.Join(frontendPath, "index.html"))
+		return
+	}
+
+	if ext := filepath.Ext(path); ext != "" {
+		var mimeType string
+		if ext == ".js" {
+			mimeType = "application/javascript"
+		} else {
+			mimeType = mime.TypeByExtension(ext)
+		}
+		if mimeType != "" {
+			w.Header().Set("Content-Type", mimeType)
+		}
+	}
+
+	http.ServeFile(w, r, path)
+
+	log.Printf("Served file: %s", path)
+}
+
 func main() {
 	flag.Parse()
-	http.HandleFunc("/v1/ws", serveWs)
+	r := http.NewServeMux()
+	r.HandleFunc("/v1/ws", serveWs)
+
+	currentDir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	frontendPath = filepath.Join(currentDir, "..", "frontend", "dist")
+
+	if _, err := os.Stat(frontendPath); os.IsNotExist(err) {
+		log.Fatalf("Frontend directory does not exist: %s", frontendPath)
+	}
+
+	r.HandleFunc("/", index)
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
-	err := http.ListenAndServe(":"+port, nil)
-	if err != nil {
-		log.Fatal(err)
+
+	srv := &http.Server{
+		Handler:      r,
+		Addr:         ":" + port,
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
 	}
+
+	fmt.Printf("Server started on PORT: %s\n", port)
+	fmt.Printf("Serving frontend from: %s\n", frontendPath)
+	log.Fatal(srv.ListenAndServe())
 }
