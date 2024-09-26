@@ -9,10 +9,9 @@ WORKDIR /app/backend
 COPY backend/ .
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
+
 RUN apk add --no-cache make
 
-CMD ["make", "run"]
+ENTRYPOINT ["make", "run"]
 
 EXPOSE $PORT
-
-ENV PORT=8080
