@@ -7,7 +7,7 @@ import classes from './Playground.module.css'
 import TextArea from "./TextArea"
 
 const wasmWorker = getWorker()
-const SOCKET_URL = `wss://localhost:8080/v1/ws`
+const SOCKET_URL = `wss://${window.location.hostname}:8080/v1/ws`
 const ws: WebSocket = new WebSocket(SOCKET_URL)
 
 ws.addEventListener('open', () => {
