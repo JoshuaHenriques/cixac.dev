@@ -28,6 +28,6 @@ RUN echo "Contents of /app/backend/bin:"
 RUN ls -la /app/backend/bin
 RUN chmod +x /app/backend/bin/cixac
 
-ENTRYPOINT ["make", "run"]
+ENTRYPOINT ["make", "keep-alive"]
 
 EXPOSE $PORT

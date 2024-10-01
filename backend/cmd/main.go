@@ -123,6 +123,22 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	binPath := filepath.Join(cwd, "bin")
+	files, err := os.ReadDir(binPath)
+	if err != nil {
+		log.Printf("Error reading bin directory: %v", err)
+	} else {
+		log.Printf("Contents of %s:", binPath)
+		for _, file := range files {
+			info, err := file.Info()
+			if err != nil {
+				log.Printf("  %s (error getting info: %v)", file.Name(), err)
+			} else {
+				log.Printf("  %s %d %s", info.Mode(), info.Size(), file.Name())
+			}
+		}
+	}
+
 	cixacPath := filepath.Join(cwd, "bin", "cixac")
 	cixacPath, err = filepath.Abs(cixacPath)
 	if err != nil {
@@ -131,6 +147,19 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Printf("Cixac path: %s\n", cixacPath)
 	fmt.Printf("Cixac path: %s\n", cixacPath)
+
+	if fileInfo, err := os.Stat(cixacPath); err != nil {
+		if os.IsNotExist(err) {
+			log.Printf("cixac file does not exist at %s", cixacPath)
+		} else {
+			log.Printf("Error checking cixac file: %v", err)
+		}
+	} else {
+		log.Printf("cixac file exists. Mode: %s, Size: %d bytes", fileInfo.Mode(), fileInfo.Size())
+		if fileInfo.Mode()&0111 == 0 {
+			log.Printf("Warning: cixac file is not executable")
+		}
+	}
 
 	proc, err := os.StartProcess(cixacPath, []string{""}, &os.ProcAttr{
 		Files: []*os.File{inr, outw, outw},
