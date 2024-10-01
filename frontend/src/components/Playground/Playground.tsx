@@ -37,7 +37,6 @@ function Playground() {
 
   const defaultHandler = (cmd: string, cmdArgs: string) => {
     const code = `${cmd} ${cmdArgs}`
-    console.log({ code })
     if (code.trimEnd().slice(-1) == `\\`) {
       setPrompt(() => "...")
     } else {
@@ -47,7 +46,6 @@ function Playground() {
     }
     ws.send(code)
     ws.onmessage = (event: any) => {
-      console.log({ data: event.data })
       setBufferedContent((prev) => (
         <>
           {prev}
