@@ -9,6 +9,9 @@ WORKDIR /app/backend
 COPY backend/ .
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
+# for debug
+RUN echo "Contents of /app/backend/bin:"
+RUN ls -la /app/backend/bin
 
 RUN apk add --no-cache make
 
