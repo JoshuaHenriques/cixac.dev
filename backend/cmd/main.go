@@ -129,10 +129,10 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 		internalError(ws, "abs path:", err)
 		return
 	}
-	log.Printf("Cixac path: %s", cixacPath)
-	fmt.Printf("Cixac path: %s", cixacPath)
+	log.Printf("Cixac path: %s\n", cixacPath)
+	fmt.Printf("Cixac path: %s\n", cixacPath)
 
-	proc, err := os.StartProcess(cixacPath, []string{"cixac"}, &os.ProcAttr{
+	proc, err := os.StartProcess(cixacPath, []string{""}, &os.ProcAttr{
 		Files: []*os.File{inr, outw, outw},
 	})
 	if err != nil {
