@@ -9,6 +9,7 @@ import (
 	"mime"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"time"
 
@@ -161,13 +162,40 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	proc, err := os.StartProcess(cixacPath, []string{""}, &os.ProcAttr{
-		Files: []*os.File{inr, outw, outw},
-	})
+	cmd := exec.Command("ls", "-l", "/app/backend/bin")
+	output, err := cmd.CombinedOutput()
 	if err != nil {
+		log.Printf("ls command error: %v", err)
+		log.Printf("ls output: %s", string(output))
+	} else {
+		log.Printf("ls output: %s", string(output))
+	}
+
+	cmd = exec.Command("ldd", cixacPath)
+	output, err = cmd.CombinedOutput()
+	if err != nil {
+		log.Printf("ldd command error: %v", err)
+	}
+	log.Printf("ldd output: %s", string(output))
+
+	cmd = exec.Command(cixacPath)
+	cmd.Stdin = inr
+	cmd.Stdout = outw
+	cmd.Stderr = outw
+	err = cmd.Start()
+	if err != nil {
+		log.Printf("exec.Command error: %v", err)
 		internalError(ws, "start:", err)
 		return
 	}
+
+	// proc, err := os.StartProcess(cixacPath, []string{""}, &os.ProcAttr{
+	// 	Files: []*os.File{inr, outw, outw},
+	// })
+	// if err != nil {
+	// 	internalError(ws, "start:", err)
+	// 	return
+	// }
 
 	inr.Close()
 	outw.Close()
@@ -180,9 +208,9 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 
 	inw.Close()
 
-	if _, err := proc.Wait(); err != nil {
-		log.Println("wait:", err)
-	}
+	// if _, err := proc.Wait(); err != nil {
+	// 	log.Println("wait:", err)
+	// }
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
