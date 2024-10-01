@@ -7,9 +7,8 @@ import classes from './Playground.module.css'
 import TextArea from "./TextArea"
 
 const wasmWorker = getWorker()
-
-const SOCKET_URL = "ws://192.168.2.10:8080/v1/ws"
-const ws = new WebSocket(SOCKET_URL)
+const SOCKET_URL = `wss://localhost:8080/v1/ws`
+const ws: WebSocket = new WebSocket(SOCKET_URL)
 
 ws.addEventListener('open', () => {
   console.log("Websocket opened.")
@@ -47,7 +46,7 @@ function Playground() {
       }
     }
     ws.send(code)
-    ws.onmessage = (event) => {
+    ws.onmessage = (event: any) => {
       console.log({ data: event.data })
       setBufferedContent((prev) => (
         <>

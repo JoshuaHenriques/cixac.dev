@@ -165,7 +165,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 	if ext := filepath.Ext(path); ext != "" {
 		var mimeType string
-		if ext == ".js" {
+		if ext == ".js" || ext == ".ts" {
 			mimeType = "application/javascript"
 		} else {
 			mimeType = mime.TypeByExtension(ext)
@@ -173,6 +173,10 @@ func index(w http.ResponseWriter, r *http.Request) {
 		if mimeType != "" {
 			w.Header().Set("Content-Type", mimeType)
 		}
+	}
+
+	if filepath.Base(path) == "worker.ts" {
+		w.Header().Set("Service-Worker-Allowed", "/")
 	}
 
 	http.ServeFile(w, r, path)
