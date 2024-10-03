@@ -27,7 +27,7 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 RUN echo "Contents of /app/backend/bin:"
 RUN ls -la /app/backend/bin
 
-RUN go build -o bin/wsServer cmd/main.go
+RUN GOOS=linux GOARCH=amd64 go build -o bin/wsServer cmd/main.go
 
 ENTRYPOINT ["make", "keep-alive"]
 
