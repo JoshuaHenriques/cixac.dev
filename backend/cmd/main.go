@@ -230,12 +230,7 @@ func main() {
 	r := http.NewServeMux()
 	r.HandleFunc("/v1/ws", serveWs)
 
-	currentDir, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	frontendPath = filepath.Join(currentDir, "..", "frontend", "dist")
+	frontendPath = os.Getenv("FRONTEND_PATH")
 
 	if _, err := os.Stat(frontendPath); os.IsNotExist(err) {
 		log.Fatalf("Frontend directory does not exist: %s", frontendPath)
