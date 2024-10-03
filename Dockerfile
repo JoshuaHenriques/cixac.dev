@@ -15,15 +15,10 @@ WORKDIR /app
 
 COPY --from=backend-builder /app/backend/bin/wsServer /app/bin/wsServer
 COPY --from=backend-builder /app/backend/bin/cixac /app/bin/cixac
-COPY --from=backend-builder /app/backend/Makefile /app/Makefile
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
 ENV FRONTEND_PATH=/app/frontend/dist
 
-# Install runtime dependencies
-# RUN apk add --no-cache make
-
 RUN chmod +x /app/bin/wsServer /app/bin/cixac
 
 ENTRYPOINT ["./bin/wsServer"]
-# ENTRYPOINT ["make", "keep-alive"]
