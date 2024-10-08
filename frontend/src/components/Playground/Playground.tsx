@@ -15,7 +15,7 @@ ws.addEventListener('open', () => {
 })
 
 const welcomeMessage = <>
-  <span>Cixac Version: 0.1-alpha (Aug 20 2024)</span><br />
+  <span>Cixac Version: 0.5-beta(Oct 03 2024)</span><br />
   <span>Type "clear" to clear the terminal screen</span><br />
   <span>Use '\' at the end of a line for multi-line input</span><br />
 </>
