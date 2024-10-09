@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/gorilla/websocket"
@@ -91,10 +92,26 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 
+var allowedDomain = "cixac.dev"
+
 func serveWs(w http.ResponseWriter, r *http.Request) {
 	// fmt.Printf("r: %+v\n", r)
 	// todo: change function
-	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
+	upgrader.CheckOrigin = func(r *http.Request) bool {
+		origin := r.Header.Get("Origin")
+		if origin == "" {
+			return false
+		}
+
+		if !strings.HasPrefix(origin, "https://") {
+			return false
+		}
+
+		originWithoutProtocol := strings.TrimPrefix(origin, "https://")
+		originDomain := strings.TrimPrefix(originWithoutProtocol, "www.")
+
+		return originDomain == allowedDomain || strings.HasSuffix(originDomain, "."+allowedDomain)
+	}
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println("upgrade:", err)
