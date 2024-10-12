@@ -2,7 +2,7 @@ import { Box, Button, Title, useComputedColorScheme } from '@mantine/core'
 import GitHubButton from 'react-github-btn'
 import classes from './Hero.module.css'
 
-function Intro() {
+function Hero() {
   const computedColorScheme = useComputedColorScheme(
     'light',
     { getInitialValueInEffect: true }
@@ -11,7 +11,7 @@ function Intro() {
   return (
     <Box className={classes.hero}>
       <Title order={1} className={classes.title}>
-        <span>The Cixac Programming Language </span>
+        <span>The Cixac Programming Language</span>
       </Title >
       <Button className={classes.button}>
         <GitHubButton
@@ -27,4 +27,4 @@ function Intro() {
   )
 }
 
-export default Intro
+export default Hero

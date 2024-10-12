@@ -1,12 +1,14 @@
 import { ChangeEvent, useRef, useEffect } from "react"
 import classes from "./TextArea.module.css"
+import { compare } from "../../../utils/compare"
+import React from "react"
 
-type PropTypes = {
+type PropType = {
   handleTextArea: (event: ChangeEvent<HTMLTextAreaElement>) => void
   value: string
 }
 
-function TextArea({ handleTextArea, value }: PropTypes) {
+function TextArea({ handleTextArea, value }: PropType) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
   useEffect(() => {
@@ -51,4 +53,4 @@ function TextArea({ handleTextArea, value }: PropTypes) {
   )
 }
 
-export default TextArea;
+export default React.memo(TextArea, compare<PropType>)

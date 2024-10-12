@@ -95,8 +95,6 @@ var upgrader = websocket.Upgrader{
 var allowedDomain = "cixac.dev"
 
 func serveWs(w http.ResponseWriter, r *http.Request) {
-	// fmt.Printf("r: %+v\n", r)
-	// todo: change function
 	upgrader.CheckOrigin = func(r *http.Request) bool {
 		origin := r.Header.Get("Origin")
 		if origin == "" {

@@ -1,0 +1,43 @@
+.script {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 30px;
+}
+
+.textAndTerm {
+  font-family: monospace;
+  order: 2;
+  display: flex;
+  flex-flow: row nowrap;
+  width: 90vw;
+  height: 90%;
+  gap: 5px;
+  max-height: 480px;
+  max-width: 1200px;
+}
+
+.scriptTerminal {
+  order: 2;
+  width: 50%;
+  height: 100%;
+}
+
+.runScriptBtn {
+  order: 1;
+}
+
+@media all and (max-width: 768px) {
+  .textAndTerm {
+    flex-flow: column nowrap;
+    overflow: hidden;
+    width: 79vw;
+  }
+
+  .scriptTerminal {
+    width: 100%;
+    height: 50%;
+  }
+}

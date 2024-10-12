@@ -1,0 +1,6 @@
+.replTerminal {
+  width: 90%;
+  height: 90%;
+  overflow: auto;
+  max-width: 800px;
+}

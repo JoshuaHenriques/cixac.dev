@@ -1,7 +1,6 @@
 import '@mantine/core/styles.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { TerminalContextProvider } from 'react-terminal'
 import App from './App.tsx'
 import { createTheme, MantineProvider } from '@mantine/core'
 import classes from './main.module.css'
@@ -29,10 +28,8 @@ const theme = createTheme({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <TerminalContextProvider>
-      <MantineProvider theme={theme}>
-        <App />
-      </MantineProvider>
-    </TerminalContextProvider >
+    <MantineProvider theme={theme}>
+      <App />
+    </MantineProvider>
   </StrictMode >,
 )
