@@ -1,8 +1,8 @@
 import { compare } from "../../../utils/compare";
 import React, { useContext, useState } from "react";
-import Terminal from "../../Terminal";
 import classes from './Repl.module.css'
 import { TerminalContext } from "react-terminal";
+import Terminal from "./Terminal";
 
 const welcomeMessage = <>
   <span>Cixac Version: 0.5-beta(Oct 03 2024)</span><br />

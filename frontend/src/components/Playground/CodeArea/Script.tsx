@@ -1,11 +1,11 @@
 import { Button } from '@mantine/core'
 import React, { ChangeEvent, useContext, useState } from 'react'
 import { getWorker, useWorker } from "../../../worker/workerAPI"
-import Terminal from '../../Terminal'
 import classes from './Script.module.css'
 import { compare } from '../../../utils/compare'
 import TextArea from './TextArea'
 import { TerminalContext } from 'react-terminal'
+import Terminal from './Terminal'
 
 const wasmWorker = getWorker()
 

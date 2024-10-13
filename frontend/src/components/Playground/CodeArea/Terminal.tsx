@@ -1,7 +1,7 @@
 import { useComputedColorScheme } from "@mantine/core";
 import { ReactTerminal } from "react-terminal";
-import { compare } from "../utils/compare";
 import React from "react";
+import { compare } from "../../../utils/compare";
 
 type PropType = {
   welcomeMessage?: JSX.Element,

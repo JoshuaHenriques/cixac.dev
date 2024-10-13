@@ -3,7 +3,7 @@ import Documentation from './components/Documentation/Documentation'
 import Hero from './components/Hero/Hero'
 import ToTop from './components/ToTop'
 import classes from './App.module.css'
-import Toggle from './components/Playground/Toggle'
+import Toggle from './components/Toggle'
 
 function App() {
 
